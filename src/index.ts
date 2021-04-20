@@ -15,9 +15,9 @@ export default function debug(): Middleware {
     expectMessage += `\tURL: ${url.format(ctx.url)}\n`
 
     expectMessage += '\tHeaders:\n'
-    for (const [key, value] of ctx.headers.entries()) {
+    ctx.headers.forEach((value, key) => {
       expectMessage += `\t\t${key}=${value}\n`
-    }
+    })
 
     expectMessage = expectMessage
       .split('\n')
@@ -32,9 +32,9 @@ export default function debug(): Middleware {
     let realMessage = 'Real Request\n'
     realMessage += `\tURL: ${url.format(ctx.url)}\n`
     realMessage += '\tHeaders:\n'
-    for (const [key, value] of ctx.headers.entries()) {
+    ctx.headers.forEach((value, key) => {
       realMessage += `\t\t${key}=${value}\n`
-    }
+    })
 
     realMessage += '\tBody:\n'
     realMessage += inspect(ctx.request.body, { indent: 2 }).replace(/.+/i, '\t\t$&')
