@@ -8,11 +8,22 @@
 
 
 
-<!-- description --><!-- description -->
+<!-- description -->
+Log keq request Infomation to console.
+<!-- description -->
 
 ## Usage
 
-<!-- usage --><!-- usage -->
+<!-- usage -->
+```javascript
+import { request } from 'keq'
+import debug from 'keq-debug'
+
+request
+  .use(debug())
+
+```
+<!-- usage -->
 
 <!-- addition --><!-- addition -->
 
