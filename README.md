@@ -19,13 +19,21 @@ Log keq request Infomation to console.
 import { request } from 'keq'
 import debug from 'keq-debug'
 
-request
-  .use(debug())
+request.use(debug())
 
+// Set Options
+request.use(debug({ requestBody: false, responseBody: false }))
 ```
 <!-- usage -->
 
-<!-- addition --><!-- addition -->
+<!-- addition -->
+## Options
+
+ Option         | Default | Description
+ :--------------|:--------|:-------------
+ `requestBody`  | `false` | Log the request body.
+ `responseBody` | `false` | Log the response body.
+<!-- addition -->
 
 ## Sponsor
 
