@@ -42,7 +42,7 @@ export default function debug({
 
   return async(ctx, next) => {
     let expectMessage = 'Expect Request\n'
-    expectMessage += `\tURL: ${url.format(ctx.url)}\n`
+    expectMessage += `\t${ctx.request.method.toUpperCase()}: ${url.format(ctx.url)}\n`
 
     expectMessage += '\tHeaders:\n'
     ctx.headers.forEach((value, key) => {
@@ -59,7 +59,7 @@ export default function debug({
     await next()
 
     let realMessage = 'Real Request\n'
-    realMessage += `\tURL: ${url.format(ctx.url)}\n`
+    realMessage += `\t${ctx.request.method.toUpperCase()}: ${url.format(ctx.url)}\n`
     realMessage += '\tHeaders:\n'
     ctx.headers.forEach((value, key) => {
       const str = formatHeader(key, value)
