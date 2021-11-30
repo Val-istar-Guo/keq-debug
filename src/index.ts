@@ -94,7 +94,7 @@ export default function debug({
       realMessage += 'Cannot find Response. Request may not sended.\n'
     }
 
-    if (responseBody && ctx.response) {
+    if (responseBody && ctx.response && ctx.response.status !== 204) {
       const contentType = ctx.response.headers.get('content-type')
       realMessage += `\tBody: ${contentType}\n`
       if (contentType && contentType.includes('application/json')) {
