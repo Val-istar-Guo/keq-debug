@@ -1,8 +1,9 @@
-import { Middleware, KeqURL } from 'keq'
+import { KeqMiddleware } from 'keq'
 import * as inspect from 'object-inspect'
-import * as url from 'url'
-import * as R from 'ramda'
 import { compile } from 'path-to-regexp'
+import * as R from 'ramda'
+import * as url from 'url'
+import { URL } from 'whatwg-url'
 
 
 interface Options {
@@ -13,7 +14,7 @@ interface Options {
 function prefixEachLine(str: string, prefix: string): string {
   return str
     .split('\n')
-    .map(msg => `${prefix}${msg}`)
+    .map((msg) => `${prefix}${msg}`)
     .join('\n')
 }
 
@@ -26,13 +27,13 @@ function formatHeader(key: string, value: string): string {
   let str = chunkString(value, 60)
   const [firstLine, ...lines] = str.split('\n')
   const space = R.repeat(' ', key.length + 1).join('')
-  str = lines.map(line => `${space}${line}`).join('\n')
+  str = lines.map((line) => `${space}${line}`).join('\n')
 
   if (str) return `${key}=${firstLine}\n${str}`
   return `${key}=${firstLine}`
 }
 
-function formatUrl(keqURL: KeqURL): string {
+function formatUrl(keqURL: URL | globalThis.URL): string {
   const urlobj = url.parse(url.format(keqURL))
 
   if (urlobj.pathname) {
@@ -46,13 +47,13 @@ function formatUrl(keqURL: KeqURL): string {
 export default function debug({
   responseBody = false,
   requestBody = false,
-}: Options = {}): Middleware {
+}: Options = {}): KeqMiddleware {
   const line = R.repeat('━', 70).join('')
   const topLine = `┏${line}`
   const leftLine = '┃ '
   const bottomLine = `┗${line}`
 
-  return async(ctx, next) => {
+  return async (ctx, next) => {
     let expectMessage = 'Expect Request\n'
     expectMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.url)}\n`
 
@@ -107,7 +108,7 @@ export default function debug({
 
     realMessage = realMessage
       .split('\n')
-      .map(msg => `${leftLine}${msg}`)
+      .map((msg) => `${leftLine}${msg}`)
       .join('\n')
 
     realMessage = `${topLine}\n${realMessage}\n${bottomLine}`

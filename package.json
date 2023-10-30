@@ -1,82 +1,57 @@
 {
   "name": "keq-debug",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "lib/index.d.ts",
-  "scripts": {
-    "test": "ava",
-    "test:debug": "ava --verbose",
-    "test:update": "ava -u",
-    "report": "nyc --reporter=html --reporter=text-summary --skip-full ava",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "ci": "git-cz",
-    "ca": "git add -A && git-cz -av",
-    "release": "standard-version --no-verify",
-    "release:alpha": "standard-version --prerelease alpha",
-    "release:first": "standard-version --first-release",
-    "prepublishOnly": "npm test && npm run build && pinst --disable",
-    "postpublish": "pinst --enable && git push",
-    "clean": "rm -rf ./lib/*",
-    "prebuild": "npm run clean",
-    "build:es": "ttsc -p build/tsconfig.es.json && npm run copyfile:es",
-    "build:lib": "ttsc -p build/tsconfig.lib.json && npm run copyfile:lib",
-    "build": "npm run build:lib && npm run build:es",
-    "watch": "NODE_ENV=development ttsc -p build/tsconfig.lib.json -w",
-    "postinstall": "is-ci || husky install",
-    "copyfile:es": "copyfiles -e \"@(build|es|lib|node_modules|tests|doc)/**/*.!(ts)\" -e \"@(README.md|CHANGELOG.md|ava.config.js|backers.md)\" \"**/*.!(ts)\" es",
-    "copyfile:lib": "copyfiles -e \"@(build|es|lib|node_modules|tests|doc)/**/*.!(ts)\" -e \"@(README.md|CHANGELOG.md|ava.config.js|backers.md)\" \"**/*.!(ts)\" lib",
-    "prewatch": "npm run copyfile:lib"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^12.0.0",
-    "@commitlint/config-conventional": "^12.0.0",
-    "@istanbuljs/nyc-config-typescript": "^1.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.15.2",
-    "@typescript-eslint/parser": "^4.15.2",
-    "ava": "^3.10.1",
-    "commitizen": "^4.2.3",
-    "copyfiles": "^2.4.1",
-    "coveralls": "^3.1.0",
-    "cz-conventional-changelog": "^3.2.0",
-    "eslint": "^7.20.0",
-    "husky": "^5.1.1",
-    "is-ci": "^3.0.0",
-    "keq": "^1.1.2",
-    "lint-staged": "^11.0.0",
-    "mili": "^3.9.3",
-    "nyc": "^15.1.0",
-    "pinst": "^2.1.6",
-    "sinon": "^10.0.0",
-    "standard-version": "^9.1.1",
-    "ts-node": "^9.1.1",
-    "ttypescript": "^1.5.12",
-    "typescript": "^4.2.2",
-    "typescript-transform-paths": "^2.2.3"
-  },
-  "dependencies": {
-    "@types/node": "^14.14.31",
-    "object-inspect": "^1.10.2",
-    "path-to-regexp": "^6.2.0",
-    "ramda": "^0.27.1",
-    "url": "^0.11.0"
-  },
-  "description": "Log keq request infomation to console",
   "version": "1.2.1",
-  "directories": {
-    "test": "tests"
+  "description": "Log keq request infomation to console",
+  "keywords": [
+    "keq",
+    "debug"
+  ],
+  "homepage": "https://github.com/Val-istar-Guo/keq-debug#readme",
+  "bugs": {
+    "url": "https://github.com/Val-istar-Guo/keq-debug/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Val-istar-Guo/keq-debug.git"
   },
-  "keywords": [
-    "keq",
-    "debug"
-  ],
-  "author": "Val.istar.Guo <val.istar.guo@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Val-istar-Guo/keq-debug/issues"
+  "author": "Val.istar.Guo <val.istar.guo@gmail.com>",
+  "main": "dist/umd/src/index.js",
+  "module": "dist/esm/src/index.js",
+  "types": "dist/esm/src/index.d.ts",
+  "directories": {},
+  "scripts": {
+    "build": "npm run clean && ./build/build.sh",
+    "clean": "rm -rf ./dist/*",
+    "dev": "npm run clean && ./build/watch.sh",
+    "prepare": "ts-patch install -s && is-ci || husky install",
+    "prepublishOnly": "npm run build",
+    "release": "standard-version",
+    "release:alpha": "standard-version --prerelease alpha",
+    "test": "jest"
   },
-  "homepage": "https://github.com/Val-istar-Guo/keq-debug#readme"
+  "dependencies": {
+    "object-inspect": "^1.13.1",
+    "path-to-regexp": "^6.2.1",
+    "ramda": "^0.29.1",
+    "url": "^0.11.3",
+    "whatwg-url": "^13.0.0"
+  },
+  "devDependencies": {
+    "@buka/eslint-config": "^1.4.1",
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@rushstack/eslint-patch": "^1.5.1",
+    "@types/node": "^20.8.9",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
+    "keq": "^2.0.3",
+    "standard-version": "^9.5.0",
+    "ts-patch": "^3.0.2",
+    "typescript": "^5.2.2",
+    "typescript-transform-paths": "^3.4.6"
+  }
 }
