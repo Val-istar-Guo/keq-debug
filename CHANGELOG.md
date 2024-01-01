@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.2](https://www.github.com/keq-request/keq-debug/compare/v2.0.1...v2.0.2) (2024-01-01)
+
+
+### Bug Fixes
+
+* real request url format error ([0f14d21](https://www.github.com/keq-request/keq-debug/commit/0f14d21f121074199f730382067714656383445b))
+
 ### [2.0.1](https://www.github.com/keq-request/keq-debug/compare/v2.0.0...v2.0.1) (2024-01-01)
 
 
