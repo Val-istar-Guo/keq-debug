@@ -72,7 +72,7 @@ export default function debug({
     await next()
 
     let realMessage = 'Real Request\n'
-    realMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.url)}\n`
+    realMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.request.url)}\n`
     realMessage += '\tHeaders:\n'
     ctx.request.headers.forEach((value, key) => {
       const str = formatHeader(key, value)
