@@ -1,9 +1,9 @@
 import { KeqMiddleware } from 'keq'
+import { KeqRequestContext } from 'keq/dist/esm/src/types/keq-context.js'
 import * as inspect from 'object-inspect'
 import { compile } from 'path-to-regexp'
 import * as R from 'ramda'
 import * as url from 'url'
-import { URL } from 'whatwg-url'
 
 
 interface Options {
@@ -33,7 +33,7 @@ function formatHeader(key: string, value: string): string {
   return `${key}=${firstLine}`
 }
 
-function formatUrl(keqURL: URL | globalThis.URL): string {
+function formatUrl(keqURL: KeqRequestContext['url']): string {
   const urlobj = url.parse(url.format(keqURL))
 
   if (urlobj.pathname) {
@@ -55,10 +55,10 @@ export default function debug({
 
   return async (ctx, next) => {
     let expectMessage = 'Expect Request\n'
-    expectMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.url)}\n`
+    expectMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.request.url)}\n`
 
     expectMessage += '\tHeaders:\n'
-    ctx.headers.forEach((value, key) => {
+    ctx.request.headers.forEach((value, key) => {
       const str = formatHeader(key, value)
       expectMessage += prefixEachLine(str, '\t\t')
       expectMessage += '\n'
@@ -74,7 +74,7 @@ export default function debug({
     let realMessage = 'Real Request\n'
     realMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.url)}\n`
     realMessage += '\tHeaders:\n'
-    ctx.headers.forEach((value, key) => {
+    ctx.request.headers.forEach((value, key) => {
       const str = formatHeader(key, value)
       realMessage += prefixEachLine(str, '\t\t')
       realMessage += '\n'
