@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.3](https://www.github.com/keq-request/keq-debug/compare/v2.0.2...v2.0.3) (2024-01-01)
+
+
+### Bug Fixes
+
+* cannot inspect body ([a15b804](https://www.github.com/keq-request/keq-debug/commit/a15b8044a6a891e0a849c6b618a76c4eaf9f5695))
+
 ### [2.0.2](https://www.github.com/keq-request/keq-debug/compare/v2.0.1...v2.0.2) (2024-01-01)
 
 
