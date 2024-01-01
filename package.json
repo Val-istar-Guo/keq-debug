@@ -43,6 +43,7 @@
     "@commitlint/config-conventional": "^18.1.0",
     "@rushstack/eslint-patch": "^1.5.1",
     "@types/node": "^20.8.9",
+    "@types/object-inspect": "^1.8.4",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
     "eslint": "^8.52.0",

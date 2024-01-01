@@ -1,6 +1,6 @@
 import { KeqMiddleware } from 'keq'
 import { KeqRequestContext } from 'keq/dist/esm/src/types/keq-context.js'
-import * as inspect from 'object-inspect'
+import inspect from 'object-inspect'
 import { compile } from 'path-to-regexp'
 import * as R from 'ramda'
 import * as url from 'url'
