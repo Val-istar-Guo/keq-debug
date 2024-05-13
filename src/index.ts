@@ -53,7 +53,7 @@ export default function debug({
   const leftLine = '┃ '
   const bottomLine = `┗${line}`
 
-  return async (ctx, next) => {
+  return async function debug(ctx, next) {
     let expectMessage = 'Expect Request\n'
     expectMessage += `\t${ctx.request.method.toUpperCase()}: ${formatUrl(ctx.request.url)}\n`
 
