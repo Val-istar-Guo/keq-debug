@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.4](https://www.github.com/keq-request/keq-debug/compare/v2.0.3...v2.0.4) (2024-05-13)
+
+
+### Performance Improvements
+
+* add middleware function name ([fed7a28](https://www.github.com/keq-request/keq-debug/commit/fed7a28173d450c012ea529ba3bba5c462f4a0ff))
+
 ### [2.0.3](https://www.github.com/keq-request/keq-debug/compare/v2.0.2...v2.0.3) (2024-01-01)
 
 
