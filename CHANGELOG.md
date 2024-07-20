@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.5](https://www.github.com/keq-request/keq-debug/compare/v2.0.4...v2.0.5) (2024-07-20)
+
+
+### Performance Improvements
+
+* remove path-to-regexp and whatwg-url ([c50d34e](https://www.github.com/keq-request/keq-debug/commit/c50d34e9e4af6190f6775bd47e83c82c0ec00b95))
+
 ### [2.0.4](https://www.github.com/keq-request/keq-debug/compare/v2.0.3...v2.0.4) (2024-05-13)
 
 
